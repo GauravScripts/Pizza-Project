@@ -1,0 +1,37 @@
+<app-header></app-header>
+<div id="head2">
+    <button class="btn" (click)="movetohomepage()">HOME</button>
+    <button class="btn" (click)="movetohomepage()">MENU</button>
+    <button class="btn" (click)="movetoorderpage()">ORDERS</button>
+    <button class="btn" id="btn3" (click)="movetologinpage()">LOGIN</button>
+    <button class="btn" id="btn4" (click)="movetosignup()">SIGNUP</button>
+</div>
+
+<div id="signup">
+    <h1>Input Login Credentials : </h1>
+    <form [formGroup]="loginformdata" >
+      <section>
+        <div class="input-group">
+          <input class="input" autocomplete="off" name="text" type="text" required="true"  formControlName="emailId">
+          <label class="user-label">Email Id :</label>
+        </div>
+      </section>
+        <br>
+        <br>
+      <section>
+        <div class="input-group">
+          <input class="input" autocomplete="off" name="text" type="text" formControlName="password" required="true">
+          <label class="user-label">Password</label>
+        </div>
+      </section>
+        <br>
+
+      <button class ="button1"(click)="sendLoginData()">
+        <p>Login</p>
+        <svg stroke-width="4" stroke="currentColor" viewBox="0 0 24 24" fill="none" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linejoin="round" stroke-linecap="round"></path>
+        </svg>
+      </button>
+    </form>
+</div>
+

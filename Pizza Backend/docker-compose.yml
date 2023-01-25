@@ -1,0 +1,67 @@
+version: "3.9"
+services:
+  authservice:
+    image: auth-app-image
+    build: c3s1pcAuth/
+    container_name: auth-app-container
+    ports:
+      - 8804:8804
+    networks:
+      - microservice
+    depends_on:
+      - mysqlservice
+    restart: always
+
+  mysqlservice:
+    image: mysql:latest
+    container_name: mysql-cont
+    ports:
+      - 3306:3306
+    networks:
+      - microservice
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USERNAME: root
+      MYSQL_PASSWORD: root
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    restart: always
+
+  customerservice:
+    image: customer-app-image
+    build: c3s1pcCustomer/
+    container_name: customer-app-container
+    ports:
+      - 8805:8805
+    networks:
+      - microservice
+    depends_on:
+      - mongoservice
+
+  mongoservice:
+    image: mongo
+    container_name: mongo-cont
+    ports:
+      - 27017:27017
+    networks:
+      - microservice
+
+  apigateway:
+    image: gateway-image
+    build: apigw/
+    container_name: gateway-container
+    ports:
+      - 8806:8806
+    networks:
+      - microservice
+
+  discoveryservice:
+    image: eureka-image
+    build: discovery-server/
+    container_name: eureka-container
+    ports:
+      - 8761:8761
+    networks:
+      - microservice
+networks:
+  microservice:
+    driver: bridge

@@ -1,0 +1,39 @@
+<app-header></app-header>
+<div id="head2">
+  <button class="btn2" (click)="movetohomepage()">HOME</button>
+  <button class="btn2" (click)="movetohomepage()">MENU</button>
+  <button class="btn2" (click)="movetoorderpage()">ORDERS</button>
+  <button class="btn2" id="btn3" (click)="movetologinpage()">LOGIN</button>
+  <button class="btn2" id="btn4" (click)="movetosignup()">SIGNUP</button>
+</div>
+<div id="signup">
+  <h1>Fill The Details</h1>
+  <form [formGroup]="signupformdata" >
+    <label>Name :</label>
+    <br>
+    <input type="text" formControlName="name">
+    <br>
+    <br>
+    <label>Email Id :</label>
+    <br>
+    <input type="text" formControlName="emailId">
+    <br>
+    <br>
+    <label>Password :</label>
+    <br>
+    <input type="password" formControlName="password">
+    <br>
+    <br>
+    <label>Mobile Number :</label>
+    <br>
+    <input type="text" formControlName="phoneNo">
+    <br>
+    <br>
+    <label>Address :</label>
+    <br>
+    <input type="text" formControlName="address">
+    <br>
+    <br>
+    <button (click)="sendsignupdata()">SUBMIT</button>
+  </form>
+</div>
